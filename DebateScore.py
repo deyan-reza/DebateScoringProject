@@ -20,14 +20,16 @@ with open("sample.txt", encoding="utf-8") as transcript:
         if parts[0] == "TRUMP":
             CurrSpeaker = parts[0]
         
+        #Determine points
         words = line.split()
         points = 0
         points += sum(1 for word in words if word.lower() in wordsForPts)
         
+        #Add points
         if CurrSpeaker == "BIDEN":
             BidenPts.append(points)
         if CurrSpeaker == "TRUMP":
             TrumpPts.append(points)
         else: points = 0
             
-print(f"TrumpPts: {sum(TrumpPts)}, BidenPts: {sum(BidenPts)}")  
+print(f"TrumpPts: {sum(TrumpPts)}, BidenPts: {sum(BidenPts)}")  #Output for testing
