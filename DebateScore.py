@@ -3,6 +3,7 @@
 #Step 2: Set up lists and variables
 i = 1 #Line numbers to help debug reading
 wordsForPts = ["we", "the", "people"] #using this list to figure out how points will work
+wordsForMorePts = ["united", "states", "america"]
 CurrSpeaker = "" #Keep track of current speaker
 BidenPts = [] #Keep track of points per line or question (whichever makes more sense)
 TrumpPts = [] #Keep track of points per line or question (whichever makes more sense)
@@ -24,6 +25,7 @@ with open("sample.txt", encoding="utf-8") as transcript:
         words = line.split()
         points = 0
         points += sum(1 for word in words if word.lower() in wordsForPts)
+        points += sum(2 for word in words if word.lower() in wordsForMorePts)
         
         #Add points
         if CurrSpeaker == "BIDEN":
@@ -32,4 +34,12 @@ with open("sample.txt", encoding="utf-8") as transcript:
             TrumpPts.append(points)
         else: points = 0
             
-print(f"TrumpPts: {sum(TrumpPts)}, BidenPts: {sum(BidenPts)}")  #Output for testing
+TrumpTotal = sum(TrumpPts)
+BidenTotal = sum(BidenPts)
+print(f"Trumps Points: {TrumpTotal}, Bidens Points: {BidenTotal}") #Output for testing
+if TrumpTotal > BidenTotal:
+    print("Winner: Trump")
+if TrumpTotal < BidenTotal:
+    print("Winner: Biden")
+else:
+    "Unable to determine"
