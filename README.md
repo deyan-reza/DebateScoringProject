@@ -1,2 +1,2 @@
 # DebateScoringProject
-A quick project to work on some new skills.
+A project in which I attempt to score a presidential debate using Python.
